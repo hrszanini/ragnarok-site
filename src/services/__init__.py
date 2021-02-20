@@ -4,5 +4,5 @@ from . import mysql
 from .login import (
     check_user,
     insert_user,
-    update_user
+    update_password
 )

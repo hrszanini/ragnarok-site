@@ -36,3 +36,7 @@ def configure_api_routes(app: fastapi.FastAPI):
     @app.post('/api/add_user')
     def post_add_user(user_id: str, user_password: str, user_email: str, user_birthday: str):
         return services.insert_user(user_id, user_password, user_email, user_birthday)
+
+    @app.post('/api/update_password')
+    def post_update_password(user_id: str, user_password: str):
+        return services.update_password(user_id, user_password)

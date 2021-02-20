@@ -29,11 +29,11 @@ def bigger(table: str, column: str):
         raise e
 
 
-def insert(table: str, **kwargs):
+def insert(table: str, register: dict):
     try:
         query = f'INSERT INTO {params(table)} VALUES '
         first = True
-        for key, value in kwargs.items():
+        for key, value in register.items():
             if first:
                 first = False
             else:
@@ -46,11 +46,11 @@ def insert(table: str, **kwargs):
         raise e
 
 
-def update(table: str, where_clause: str, **kwargs):
+def update(table: str, where_clause: str, register: dict):
     try:
         query = f'UPDATE {params(table)} SET '
         first = True
-        for key, value in kwargs.items():
+        for key, value in register.items():
             if first:
                 first = False
             else:
