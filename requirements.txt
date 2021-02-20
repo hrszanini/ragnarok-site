@@ -4,3 +4,4 @@ loguru==0.5.3
 mysql-connector-python
 pydantic==1.7.3
 typing==3.7.4.3
+aiofiles
