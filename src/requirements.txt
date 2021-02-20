@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+loguru==0.5.3
+mysql-connector-python
