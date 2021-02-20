@@ -1,0 +1,51 @@
+<html lang="pt-BR">
+    <meta charset="UTF-8">
+    <head>
+        <link rel="stylesheet" href="/css/styles.css">
+        <script src="/js/script.js"></script>
+        <title>Ragnarok Z</title>
+    </head>
+    <body>
+        <div id="block-title">
+            <img src="/img/ragnarok-logo.png" height="100px">
+        </div>
+        <div id="block1">
+            <h1>Criação de Novo Usuário</h1>
+
+            <label>Nome</label>
+            <input id="new_id" type="text">
+                
+            <label>E-mail</label>
+            <input id="new_email" type="email">
+
+            <label>Data de nascimento</label>
+            <input id="new_birth" type="date">
+
+            <label>Senha</label>
+            <input id="new_pass" type="password">
+
+            <label>Repetir a senha</label>
+            <input id="new_re_pass" type="password">
+
+            <button onclick="add_user();">Cadastrar</button>
+        </div>
+
+        <div id="block2">
+            <h1>Troca de senha</h1>
+
+            <label>Nome</label>
+            <input id="user_id" type="text">
+                
+            <label>Senha antiga</label>
+            <input id="old_pass" type="password">
+
+            <label>Nova Senha</label>
+            <input id="user_pass" type="password">
+
+            <label>Repetir a senha</label>
+            <input id="re_pass" type="password">
+
+            <button onclick="update_password();">Alterar</button>
+        </div>
+    </body>
+</html>

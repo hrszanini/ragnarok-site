@@ -1,5 +1,6 @@
 import fastapi
 import services
+import controllers
 
 
 def configure_page_routes(app: fastapi.FastAPI):
@@ -38,10 +39,25 @@ def configure_api_routes(app: fastapi.FastAPI):
     def get_check_user(user_id: str):
         return services.check_user(user_id)
 
-    @app.post('/api/add_user')
-    def post_add_user(user_id: str, user_password: str, user_email: str, user_birthday: str):
-        return services.insert_user(user_id, user_password, user_email, user_birthday)
+    @app.post('/api/user')
+    def post_add_user(new_user: controllers.NewUser):
+        return services.insert_user(user_id=new_user.user_id,
+                                    user_password=new_user.user_password,
+                                    user_email=new_user.user_email,
+                                    user_birthday=new_user.user_birthday)
 
-    @app.post('/api/update_password')
-    def post_update_password(user_id: str, user_password: str):
-        return services.update_password(user_id, user_password)
+    @app.get('/api/user')
+    def get_user(user_id: str):
+        return services.get_user(user_id).show()
+
+    @app.put('/api/user/password')
+    def put_update_password(login: controllers.Login):
+        user = services.login(login.user_id, login.user_password)
+        return services.update_password(user=user,
+                                        new_password=login.new_password)
+
+
+def configure_test_routes(app: fastapi.FastAPI):
+    @app.get('/test/user')
+    def get_user(user_id: str):
+        return services.get_user(user_id)
