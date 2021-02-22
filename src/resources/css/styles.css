@@ -80,6 +80,8 @@ div#content input {
     border-radius: 10px;
     border: solid;
     border-width: thin;
+
+     text-align: center;
 }
 
 div#content label {
