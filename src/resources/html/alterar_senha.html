@@ -1,15 +1,17 @@
 <h1>Troca de senha</h1>
+<form onsubmit="update_password(); return false;">
+    <label>Usuário</label>
+    <input id="username" type="text" autocomplete="username" required>
 
-<label>Nome</label>
-<input id="user_id" type="text">
+    <label>Senha atual</label>
+    <input id="current-password" type="password" autocomplete="current-password" required>
 
-<label>Senha antiga</label>
-<input id="old_pass" type="password">
+    <label>Nova Senha</label>
+    <input id="new-password" type="password" autocomplete="new-password" required>
 
-<label>Nova Senha</label>
-<input id="user_pass" type="password">
+    <label>Repetir a senha</label>
+    <input id="redo-new-password" type="password" autocomplete="new-password" required>
 
-<label>Repetir a senha</label>
-<input id="re_pass" type="password">
-
-<button onclick="update_password();">Alterar</button>
+    <input type="reset" value="Limpar">
+    <input type="submit" value="Alterar">
+</form>

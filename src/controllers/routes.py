@@ -6,7 +6,7 @@ import controllers
 def configure_page_routes(app: fastapi.FastAPI):
     @app.get('/')
     def home_page():
-        return html_file('home')
+        return html_file('index')
 
     @app.get('/favicon.ico')
     def favicon():
@@ -21,17 +21,24 @@ def configure_page_routes(app: fastapi.FastAPI):
     @app.get('/css/{file}')
     def css_file(file: str):
         css_file_path = '{}/css/{}'.format(services.RESOURCES_PATH, file)
-        return fastapi.responses.HTMLResponse(open(css_file_path, 'r', encoding='utf8').read())
+        return fastapi.responses.Response(open(css_file_path, 'r', encoding='utf8').read(), media_type='text/css')
 
     @app.get('/js/{file}')
     def css_file(file: str):
         js_file_path = '{}/js/{}'.format(services.RESOURCES_PATH, file)
-        return fastapi.responses.HTMLResponse(open(js_file_path, 'r', encoding='utf8').read())
+        return fastapi.responses.Response(open(js_file_path, 'r', encoding='utf8').read(),  media_type='text/plain')
 
     @app.get('/img/{file}')
     def css_file(file: str):
         img_file_path = '{}/img/{}'.format(services.RESOURCES_PATH, file)
-        return fastapi.responses.FileResponse(img_file_path, media_type='img/png')
+        extension = file.split('.')[-1]
+        return fastapi.responses.FileResponse(img_file_path, media_type=f'image/{extension}')
+
+    @app.get('/file/{file}')
+    def css_file(file: str):
+        img_file_path = '{}/img/{}'.format(services.RESOURCES_PATH, file)
+        extension = file.split('.')[-1]
+        return fastapi.responses.FileResponse(img_file_path, media_type=f'application/{extension}')
 
 
 def configure_api_routes(app: fastapi.FastAPI):

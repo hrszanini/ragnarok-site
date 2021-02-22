@@ -2,50 +2,22 @@
     <meta charset="UTF-8">
     <head>
         <link rel="stylesheet" href="/css/styles.css">
-        <script src="/js/script.js"></script>
+        <script src="/js/api.js"></script>
+        <script src="/js/navigation.js"></script>
         <title>Ragnarok Z</title>
     </head>
     <body>
-        <div id="block-title">
-            <img src="/img/ragnarok-logo.png" height="100px">
-        </div>
-        <div id="block1">
-            <h1>Criação de Novo Usuário</h1>
-
-            <label>Nome</label>
-            <input id="new_id" type="text">
-                
-            <label>E-mail</label>
-            <input id="new_email" type="email">
-
-            <label>Data de nascimento</label>
-            <input id="new_birth" type="date">
-
-            <label>Senha</label>
-            <input id="new_pass" type="password">
-
-            <label>Repetir a senha</label>
-            <input id="new_re_pass" type="password">
-
-            <button onclick="add_user();">Cadastrar</button>
-        </div>
-
-        <div id="block2">
-            <h1>Troca de senha</h1>
-
-            <label>Nome</label>
-            <input id="user_id" type="text">
-                
-            <label>Senha antiga</label>
-            <input id="old_pass" type="password">
-
-            <label>Nova Senha</label>
-            <input id="user_pass" type="password">
-
-            <label>Repetir a senha</label>
-            <input id="re_pass" type="password">
-
-            <button onclick="update_password();">Alterar</button>
-        </div>
+        <header class="unselectable">
+            <input type="button" value="Downloads" onclick="load_page('downloads');" onmouseover="get_page('downloads');">
+            <input type="button" value="Cadastrar" onclick="load_page('cadastro');" onmouseover="get_page('cadastro');">
+            <input type="button" value="Alterar Senha" onclick="load_page('alterar_senha');" onmouseover="get_page('alterar_senha');">
+            <img src="/img/ragnarok-logo.png" value="Logo">
+        </header>
+        <div id="content" class="unselectable"></div>
+        <footer class="unselectable">
+            <br>Ragnarok Z criado por Hamilton Zanini
+        </footer>
+        <div id="loading" class="unselectable"><img src="/img/loading.gif"></div>
+        <div id="message" class="unselectable" onclick="off();"></div>
     </body>
 </html>

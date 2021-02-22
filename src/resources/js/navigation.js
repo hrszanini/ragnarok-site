@@ -1,5 +1,24 @@
-function page(page){
-    var url = '/' + page
+const pages = {}
+
+function get_page(page){
+    if(!(page in pages))
+    {
+        pages[page] = null;
+        var url = '/' + page
+        get_request(url, text => {
+            pages[page] = text;
+        });
+    }
+}
+
+function load_page(page){
+    if(page in pages){
+        get_page(page);
+    }
+    document.getElementById("content").innerHTML = pages[page];
+}
+
+function get_request(url, callback){
     const request = new Request(url, {method: 'GET'});
     fetch(request)
         .then(response => {
@@ -11,13 +30,10 @@ function page(page){
             }
         })
         .then(text => {
-            document.getElementById("content").innerHTML = text;
+            callback(text);
             console.debug(text);
         }).catch(error => {
             console.error(error);
         });
     return url;
 }
-
-
-
