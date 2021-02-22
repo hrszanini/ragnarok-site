@@ -1,3 +1,8 @@
+@font-face {
+    font-family: personal_font;
+    src: url(/font/MoongladeDemoBold-jOzM.ttf);
+}
+
 body {
     margin: 0;
     background-image: url('/img/bg-site.jpg');
@@ -43,12 +48,11 @@ div#content {
     padding-top: 0%;
     padding-bottom: 0%;
 
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     text-align: center;
 
-    font-weight: bold;
-    color:darkslategrey;
+    color:black;
 
     width:60%;
     margin-left: 20%;
@@ -56,16 +60,16 @@ div#content {
 }
 
 div#content h1 {
+    font-family: personal_font;
     align-self: center;
+    color:darkslategrey;
     padding-top: 5%;
     margin-top: 0%;
-    font-variant: small-caps;
 }
 
 div#content h2 {
-    font-variant: small-caps;
+    font-weight: normal;
 }
-
 div#content input {
     margin-left: 20%;
     margin-right: 20%;

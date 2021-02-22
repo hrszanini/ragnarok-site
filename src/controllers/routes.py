@@ -24,21 +24,27 @@ def configure_page_routes(app: fastapi.FastAPI):
         return fastapi.responses.Response(open(css_file_path, 'r', encoding='utf8').read(), media_type='text/css')
 
     @app.get('/js/{file}')
-    def css_file(file: str):
+    def js_file(file: str):
         js_file_path = '{}/js/{}'.format(services.RESOURCES_PATH, file)
         return fastapi.responses.Response(open(js_file_path, 'r', encoding='utf8').read(),  media_type='text/plain')
 
     @app.get('/img/{file}')
-    def css_file(file: str):
+    def img_file(file: str):
         img_file_path = '{}/img/{}'.format(services.RESOURCES_PATH, file)
         extension = file.split('.')[-1]
         return fastapi.responses.FileResponse(img_file_path, media_type=f'image/{extension}')
 
     @app.get('/file/{file}')
-    def css_file(file: str):
-        img_file_path = '{}/img/{}'.format(services.RESOURCES_PATH, file)
+    def get_file(file: str):
+        file_path = '{}/file/{}'.format(services.RESOURCES_PATH, file)
         extension = file.split('.')[-1]
-        return fastapi.responses.FileResponse(img_file_path, media_type=f'application/{extension}')
+        return fastapi.responses.FileResponse(file_path, media_type=f'application/{extension}')
+
+    @app.get('/font/{file}')
+    def font_file(file: str):
+        img_file_path = '{}/font/{}'.format(services.RESOURCES_PATH, file)
+        extension = file.split('.')[-1]
+        return fastapi.responses.FileResponse(img_file_path, media_type=f'font/{extension}')
 
 
 def configure_api_routes(app: fastapi.FastAPI):
