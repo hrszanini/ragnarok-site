@@ -65,9 +65,17 @@ def configure_api_routes(app: fastapi.FastAPI):
 
     @app.put('/api/user/password')
     def put_update_password(login: controllers.Login):
-        user = services.login(login.user_id, login.user_password)
+        if not login.token:
+            login.token = services.login(login.user_id, login.user_password)
+        user = services.tokens[login.token]
         return services.update_password(user=user,
                                         new_password=login.new_password)
+
+    @app.post('/api/login')
+    def put_update_password(login: controllers.Login):
+        if login.token and login.token in services.tokens:
+            return login.token
+        return services.login(login.user_id, login.user_password)
 
 
 def configure_test_routes(app: fastapi.FastAPI):

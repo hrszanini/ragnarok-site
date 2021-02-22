@@ -2,17 +2,13 @@
     <meta charset="UTF-8">
     <head>
         <link rel="stylesheet" href="/css/styles.css">
-        <script src="/js/api.js"></script>
         <script src="/js/navigation.js"></script>
+        <script src="/js/api.js"></script>
         <title>Ragnarok Z</title>
     </head>
-    <body>
-        <header class="unselectable">
-            <input type="button" value="Downloads" onclick="load_page('downloads');" onmouseover="get_page('downloads');">
-            <input type="button" value="Cadastrar" onclick="load_page('cadastro');" onmouseover="get_page('cadastro');">
-            <input type="button" value="Alterar Senha" onclick="load_page('alterar_senha');" onmouseover="get_page('alterar_senha');">
-            <img src="/img/ragnarok-logo.png" value="Logo">
-        </header>
+    <body onload="header('home');check_login();">
+        <img src="/img/ragnarok-logo.png" id="logo" value="Logo">
+        <header id="header" class="unselectable"></header>
         <div id="content" class="unselectable"><h1>Bem vindo ao<br>Ragnarok Z</h1></div>
         <footer class="unselectable">
             <br>Ragnarok Z criado por Hamilton Zanini

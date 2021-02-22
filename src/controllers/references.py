@@ -11,7 +11,8 @@ class NewUser(pydantic.BaseModel):
 
 
 class Login(pydantic.BaseModel):
-    user_id: str
-    user_password: str
+    user_id: typing.Optional[str]
+    user_password: typing.Optional[str]
     new_password: typing.Optional[str]
     _new_password = pydantic.validator('new_password', allow_reuse=True)(controllers.validate_password)
+    token: typing.Optional[str]

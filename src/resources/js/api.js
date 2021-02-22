@@ -1,6 +1,6 @@
 const api = {
     'update_password': '/api/user/password',
-    'add_user': '/api/user'
+    'add_user': '/api/user',
 }
 
 function add_user(){
@@ -27,7 +27,6 @@ function add_user(){
 }
 
 function update_password(){
-    id_obj = document.getElementById("username" );
     old_pass_obj = document.getElementById("current-password");
     new_pass_obj = document.getElementById("new-password");
     re_pass_obj = document.getElementById("redo-new-password");
@@ -36,8 +35,7 @@ function update_password(){
         error('As senhas digitadas não coincidem');
     }else{
         new_pass= {
-            "user_id": id_obj.value,
-            "user_password": old_pass_obj.value,
+            "token": sessionStorage.getItem('token'),
             "new_password": new_pass_obj.value
         }
 
@@ -45,29 +43,6 @@ function update_password(){
             ok('Senha alterada com sucesso');
         });
     }
-}
-
-function request(url, method, data, callback){
-    loading('visible');
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const request = new Request(url, { method: method, headers: myHeaders, body: JSON.stringify(data)});
-    fetch(request)
-        .then(response => {
-            loading('hidden');
-            if (response.status === 200) {
-                callback(response);
-            } else {
-                error('Ops! Houve um erro em nosso servidor');
-                throw new Error('Ops! Houve um erro em nosso servidor');
-            }
-        })
-        .then(response => {
-            console.debug(response);
-        }).catch(error => {
-            console.error(error);
-        });
 }
 
 function loading(visibility){
@@ -96,12 +71,38 @@ function message(visibility, msg, color){
     
 }
 
-function download(url){
-    let element = document.createElement('a')
-    element.setAttribute('href', url);
-    element.style.visibility = 'hidden';
+function login(){
+    username_obj = document.getElementById("username");
+    password_obj = document.getElementById("current-password");
 
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element)
+    username = username_obj.value;
+    password = password_obj.value;
+
+    user_json = {
+        "user_id": username,
+        "user_password": password
+    }
+
+    get_page('alterar_senha');
+    request('/api/login', 'POST', user_json, response => {
+        localStorage.setItem('token', response.replaceAll('"',''));
+        ok('Conectado');
+        header('login');
+        load_page('alterar_senha');
+    });
+}
+
+function check_login(){
+    token = localStorage.getItem('token');
+    if(token != null){
+        user_json = {
+            "token": token
+        }
+        get_page('alterar_senha');
+        request('/api/login', 'POST', user_json, response => {
+            localStorage.setItem('token', response.replaceAll('"',''));
+            header('login');
+            load_page('alterar_senha');
+        }, error =>{localStorage.removeItem('token');});
+    }
 }

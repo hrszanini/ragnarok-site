@@ -34,7 +34,7 @@ header input:hover {
     color: white;
 }
 
-header img {
+img#logo {
     left: 2%;
     top: 1%;
 
