@@ -6,7 +6,7 @@ import controllers
 def configure_page_routes(app: fastapi.FastAPI):
     @app.get('/')
     def home_page():
-        return html_file('index.html')
+        return html_file('home')
 
     @app.get('/favicon.ico')
     def favicon():
@@ -15,7 +15,7 @@ def configure_page_routes(app: fastapi.FastAPI):
 
     @app.get('/{file}')
     def html_file(file: str):
-        html_file_path = '{}/html/{}'.format(services.RESOURCES_PATH, file)
+        html_file_path = '{}/html/{}.html'.format(services.RESOURCES_PATH, file)
         return fastapi.responses.HTMLResponse(open(html_file_path, 'r', encoding='utf8').read())
 
     @app.get('/css/{file}')
