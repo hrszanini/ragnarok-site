@@ -8,6 +8,7 @@ class NewUser(pydantic.BaseModel):
     user_password: str
     user_email: str
     user_birthday: str
+    _user_password = pydantic.validator('user_password', allow_reuse=True)(controllers.validate_password)
 
 
 class Login(pydantic.BaseModel):
