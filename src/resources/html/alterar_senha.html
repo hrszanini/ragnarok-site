@@ -1,5 +1,5 @@
 <h1>Troca de senha</h1>
-<form onsubmit="update_password(); return false;">
+<form onsubmit="update_password(); return false;" onmouseover="script('/js/alterar_senha.js');">
     <label>Nova Senha</label>
     <input id="new-password" type="password" autocomplete="new-password" required>
 
@@ -7,5 +7,5 @@
     <input id="redo-new-password" type="password" autocomplete="new-password" required>
 
     <input type="reset" value="Limpar">
-    <input type="submit" value="Alterar">
+    <input type="button" onclick="update_password();" value="Alterar">
 </form>

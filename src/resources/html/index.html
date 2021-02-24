@@ -3,17 +3,20 @@
     <head>
         <link rel="stylesheet" href="/css/styles.css">
         <script src="/js/navigation.js"></script>
-        <script src="/js/api.js"></script>
         <title>Ragnarok Z</title>
     </head>
-    <body onload="header('home');check_login();">
-        <img src="/img/ragnarok-logo.png" id="logo" value="Logo">
-        <header id="header" class="unselectable"></header>
-        <div id="content" class="unselectable"><h1>Bem vindo ao<br>Ragnarok Z</h1></div>
+    <body onload="menu('home');load_page('home');">
+        <header id="header" class="unselectable">
+            <img src="/img/ragnarok-logo.png" id="logo" value="Logo">
+        </header>
+        <div id="menu" class="unselectable"></div>
+        <div id="content" class="unselectable"></div>
         <footer class="unselectable">
-            <br>Ragnarok Z criado por Hamilton Zanini
+            Ragnarok Z criado por Hamilton Zanini
         </footer>
-        <div id="loading" class="unselectable"><img src="/img/loading.gif"></div>
-        <div id="message" class="unselectable" onclick="off();"></div>
+        <div id="overtop" class="unselectable">
+            <img  id="loading" src="/img/loading.gif">
+            <div id="message" class="unselectable"></div>
+        </div>
     </body>
 </html>

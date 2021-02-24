@@ -2,9 +2,6 @@ from loguru import logger
 
 import model
 import services
-import uuid
-
-tokens = {}
 
 
 def login(user_id: str, user_password: str):
@@ -12,9 +9,9 @@ def login(user_id: str, user_password: str):
         user = get_user(user_id)
         if user.user_pass != user_password:
             raise RuntimeError('Usuário não possui permissão para alteração!')
-        token = uuid.uuid4().hex
-        tokens[token] = user
-        return token
+        new_token = services.token.Token(user)
+        services.tokens.append(new_token)
+        return new_token.get()
     except Exception as e:
         logger.error(e)
         raise e

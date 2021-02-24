@@ -26,7 +26,7 @@ def configure_page_routes(app: fastapi.FastAPI):
     @app.get('/js/{file}')
     def js_file(file: str):
         js_file_path = '{}/js/{}'.format(services.RESOURCES_PATH, file)
-        return fastapi.responses.Response(open(js_file_path, 'r', encoding='utf8').read(),  media_type='text/plain')
+        return fastapi.responses.Response(open(js_file_path, 'r', encoding='utf8').read(), media_type='text/plain')
 
     @app.get('/img/{file}')
     def img_file(file: str):
@@ -48,16 +48,33 @@ def configure_page_routes(app: fastapi.FastAPI):
 
 
 def configure_api_routes(app: fastapi.FastAPI):
+    @app.exception_handler(services.exceptions.ForbiddenAccess)
+    async def sert_operation_error(request, exc):
+        return fastapi.responses.Response(
+            status_code=fastapi.status.HTTP_403_FORBIDDEN,
+            content=exc.msg
+        )
+
+    @app.post('/api/login')
+    def post_login(login: controllers.Login):
+        try:
+            if login.token and services.token.get_token(services.tokens, login.token):
+                return services.token.get_token(services.tokens, login.token).get()
+            return services.login(login.user_id, login.user_password)
+        except Exception as e:
+            raise services.exceptions.ForbiddenAccess('Usuário não permitido.')
+
     @app.get('/api/check_user')
     def get_check_user(user_id: str):
         return services.check_user(user_id)
 
     @app.post('/api/user')
     def post_add_user(new_user: controllers.NewUser):
-        return services.insert_user(user_id=new_user.user_id,
-                                    user_password=new_user.user_password,
-                                    user_email=new_user.user_email,
-                                    user_birthday=new_user.user_birthday)
+        services.insert_user(user_id=new_user.user_id,
+                             user_password=new_user.user_password,
+                             user_email=new_user.user_email,
+                             user_birthday=new_user.user_birthday)
+        return services.login(new_user.user_id, new_user.user_password)
 
     @app.get('/api/user')
     def get_user(user_id: str):
@@ -65,17 +82,12 @@ def configure_api_routes(app: fastapi.FastAPI):
 
     @app.put('/api/user/password')
     def put_update_password(login: controllers.Login):
-        if not login.token:
-            login.token = services.login(login.user_id, login.user_password)
-        user = services.tokens[login.token]
-        return services.update_password(user=user,
-                                        new_password=login.new_password)
+        login.token = post_login(login)
 
-    @app.post('/api/login')
-    def put_update_password(login: controllers.Login):
-        if login.token and login.token in services.tokens:
-            return login.token
-        return services.login(login.user_id, login.user_password)
+        user = services.token.get_token(services.tokens, login.token).user
+        services.update_password(user=user,
+                                 new_password=login.new_password)
+        return login.token
 
 
 def configure_test_routes(app: fastapi.FastAPI):

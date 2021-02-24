@@ -1,10 +1,10 @@
 <h1>Login</h1>
-<form onsubmit="login(); return false;">
+<form onsubmit="login(); return false;" onmouseover="script('/js/login.js');">
     <label>Usuário</label>
     <input id="username" type="text" autocomplete="username" required>
 
     <label>Senha</label>
     <input id="current-password" type="password" autocomplete="current-password" required>
 
-    <input type="button" onclick="login();" value="Logar">
+    <input type="button" value="Logar" onclick="login()">
 </form>

@@ -3,22 +3,87 @@
     src: url(/font/MoongladeDemoBold-jOzM.ttf);
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ /*Main Layout Style */
 body {
     margin: 0;
     background-image: url('/img/bg-site.jpg');
 }
 
 header {
+    display: block;
+    height: 7%;
+    text-align: center;
+
     background-color: orange;
-    height: 13%;
-    padding-left: 15%;
 }
 
-header input {
+div#menu {
+    display: block;
+    height: 5%;
+
+    text-align: center;
+    background-color: orange;
+}
+
+div#content {
+    display: block;
+    height: 82%;
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 0%;
+    padding-bottom: 0%;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    text-align: center;
+
+    color:black;
+
+    background-color: white;
+}
+
+footer {
+    display: block;
+    height: 6%;
+
+    background-color: #264653;
+
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+}
+
+div#overtop {
+    display: none;
+
+    background-color: #00000000;
+    position: absolute;
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+
+    top:0px;
+    left: 0px;
+    z-index: 1;
+}
+
+ /*Menu Layout Style */
+div#menu input {
     height: 100%;
     width: 20%;
-
-    margin-right: 1%;
 
     border: none;
     background-color: orange;
@@ -29,36 +94,17 @@ header input {
     color: black;
 }
 
-header input:hover {
+div#menu input:hover {
     background-color: rgb(253, 178, 39);
     color: white;
 }
 
-img#logo {
-    left: 2%;
-    top: 1%;
-
-    max-width: 10%;
-    max-height: 10%;
-    position: absolute;
+ /*Logo Layout Style */
+header img {
+    max-height: 100%;
 }
 
-div#content {
-    min-height: 80%;
-    padding-top: 0%;
-    padding-bottom: 0%;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    text-align: center;
-
-    color:black;
-
-    width:60%;
-    margin-left: 20%;
-    background-color: white;
-}
-
+ /*Content Layout Style */
 div#content h1 {
     font-family: personal_font;
     align-self: center;
@@ -105,51 +151,30 @@ div#content button {
     text-align: center;
 }
 
-footer {
-    background-color: #264653;
-    height: 7%;
-
-    padding-top: 0%;
-
-    color: white;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: small;
-}
-
-div#loading {
-    visibility: hidden;
-    background-color: #aaaaaaaa;
-    position: absolute;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    top:0px;
-    left: 0px;
-    text-align: center;
-}
-
-div#loading img{
-    position: absolute;
-    top:40%;
+ /*Overtop Layout Style */
+img#loading {
+    display: none;
     height: 10%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
 }
 
 div#message {
-    visibility: hidden;
-    background-color: rgb(255, 185, 185);
-    position: absolute;
-    z-index: 11;
-    top:30%;
-    left: 30%;
+    display: none;
 
-    width: 40%;
+    width: 20%;
+    height: 5%;
+
+    margin-top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
-
+    
     color: black;
     padding: 2%;
     font-family: 'Courier New', Courier, monospace;
@@ -157,11 +182,3 @@ div#message {
     text-align: center;
 }
 
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
