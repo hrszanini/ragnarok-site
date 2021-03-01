@@ -1,6 +1,6 @@
 @font-face {
     font-family: personal_font;
-    src: url('/font/MoongladeDemoBold-jOzM.ttf');
+    src: url('../font/MoongladeDemoBold-jOzM.ttf');
 }
 
 .unselectable {
@@ -15,7 +15,7 @@
  /*Main Layout Style */
 body {
     margin: 0;
-    background-image: url('/img/bg-site.jpg');
+    background-image: url('../img/bg-site.jpg');
 }
 
 header {
