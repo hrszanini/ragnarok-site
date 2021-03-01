@@ -26,7 +26,7 @@ header {
     background-color: orange;
 }
 
-nav#menu {
+#menu {
     display: block;
     height: 5%;
 
@@ -34,7 +34,7 @@ nav#menu {
     background-color: orange;
 }
 
-div#content {
+#content {
     display: block;
     height: 82%;
     width:70%;
@@ -65,7 +65,7 @@ footer {
     font-size: small;
 }
 
-div#overtop {
+#overtop {
     display: none;
 
     background-color: #00000000;
@@ -81,7 +81,7 @@ div#overtop {
 }
 
  /*Menu Layout Style */
-div#menu input {
+#menu input {
     height: 100%;
     width: 20%;
 
@@ -94,7 +94,7 @@ div#menu input {
     color: black;
 }
 
-div#menu input:hover {
+#menu input:hover {
     background-color: rgb(253, 178, 39);
     color: white;
 }
@@ -113,10 +113,10 @@ div#content h1 {
     margin-top: 0%;
 }
 
-div#content h2 {
+#content h2 {
     font-weight: normal;
 }
-div#content input {
+#content input {
     margin-left: 20%;
     margin-right: 20%;
     margin-bottom: 2%;
@@ -130,13 +130,13 @@ div#content input {
      text-align: center;
 }
 
-div#content label {
+#content label {
     margin-left: 30%;
     margin-right: 30%; 
     width: 30%;
 }
 
-div#content button {
+#content button {
     border-style: none;
     border-radius: 15px;
     height: 5%;
@@ -152,7 +152,7 @@ div#content button {
 }
 
  /*Overtop Layout Style */
-img#loading {
+#loading {
     display: none;
     height: 10%;
 
@@ -161,7 +161,7 @@ img#loading {
     margin-top: 30%;
 }
 
-div#message {
+#message {
     display: none;
 
     width: 20%;
