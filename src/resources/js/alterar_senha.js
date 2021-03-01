@@ -1,6 +1,6 @@
 function update_password(){
     const api = {
-        'url': './api/user/password'
+        'url': '/api/user/password'
     }
 
     show_loading();

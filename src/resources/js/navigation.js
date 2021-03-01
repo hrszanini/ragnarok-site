@@ -70,7 +70,7 @@ function load_page(page){
 function get_page(page, callback){
     if(!(page in pages)){
         pages[page] = null;
-        var url = `./${page}`;
+        var url = `/${page}`;
         fetch(new Request(url, {method: 'GET'}))
             .then(response => {
                 if (response.status === 200) {
