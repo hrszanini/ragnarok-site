@@ -1,6 +1,6 @@
 function login(){
     const api = {
-        'url': '/api/login'
+        'url': './api/login'
     }
 
     show_loading();

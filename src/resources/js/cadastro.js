@@ -1,6 +1,6 @@
 function add_user(){
     const api = {
-        'url': '/api/user'
+        'url': './api/user'
     }
 
     show_loading();
