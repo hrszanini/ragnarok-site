@@ -13,6 +13,10 @@ const menus = {
     }
 }
 
+function Url(url){
+    return `${location.href}${url}`
+}
+
 //Menu Controllers
 function menu(context, options){
     if(options !== undefined){
@@ -49,6 +53,7 @@ function menu_option_js_function(func, label){
 
 //Scripts Controller
 function script(url){
+    url = Url(url);
     if(scripts.indexOf(url) == -1)
     {
         scripts.push(url);
@@ -71,6 +76,7 @@ function get_page(page, callback){
     if(!(page in pages)){
         pages[page] = null;
         var url = `/${page}`;
+        url = Url(url);
         fetch(new Request(url, {method: 'GET'}))
             .then(response => {
                 if (response.status === 200) {
