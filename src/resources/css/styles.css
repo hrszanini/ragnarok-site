@@ -26,7 +26,7 @@ header {
     background-color: orange;
 }
 
-div#menu {
+nav#menu {
     display: block;
     height: 5%;
 
