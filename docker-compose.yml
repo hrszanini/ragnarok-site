@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  ragnarok-site:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ragnarok-site
+    ports:
+      - 8080:8080

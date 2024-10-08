@@ -1,0 +1,20 @@
+<h1>Criação de Usuário</h1>
+<form onsubmit="add_user();return false;" onmouseover="script('./js/cadastro.js');">
+    <label>Usuário</label>
+    <input id="username" type="text" autocomplete="username" required>
+        
+    <label>E-mail</label>
+    <input id="email" type="email" autocomplete="username" required>
+
+    <label>Data de nascimento</label>
+    <input id="birthday" type="date" required>
+
+    <label>Senha</label>
+    <input id="new-password" type="password" autocomplete="new-password" required>
+
+    <label>Repetir a senha</label>
+    <input id="redo-new-password" type="password" autocomplete="new-password" required>
+
+    <input type="reset" value="Limpar">
+    <input type="submit" value="Cadastrar">
+</form>

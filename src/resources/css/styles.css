@@ -1,0 +1,184 @@
+@font-face {
+    font-family: personal_font;
+    src: url('../font/MoongladeDemoBold-jOzM.ttf');
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ /*Main Layout Style */
+body {
+    margin: 0;
+    background-image: url('../img/bg-site.jpg');
+}
+
+header {
+    display: block;
+    height: 7%;
+    text-align: center;
+
+    background-color: orange;
+}
+
+#menu {
+    display: block;
+    height: 5%;
+
+    text-align: center;
+    background-color: orange;
+}
+
+#content {
+    display: block;
+    height: 82%;
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 0%;
+    padding-bottom: 0%;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    text-align: center;
+
+    color:black;
+
+    background-color: white;
+}
+
+footer {
+    display: block;
+    height: 6%;
+
+    background-color: #264653;
+
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+}
+
+#overtop {
+    display: none;
+
+    background-color: #00000000;
+    position: absolute;
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+
+    top:0px;
+    left: 0px;
+    z-index: 1;
+}
+
+ /*Menu Layout Style */
+#menu input {
+    height: 100%;
+    width: 20%;
+
+    border: none;
+    background-color: orange;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+
+#menu input:hover {
+    background-color: rgb(253, 178, 39);
+    color: white;
+}
+
+ /*Logo Layout Style */
+header img {
+    max-height: 100%;
+}
+
+ /*Content Layout Style */
+div#content h1 {
+    font-family: personal_font;
+    align-self: center;
+    color:darkslategrey;
+    padding-top: 5%;
+    margin-top: 0%;
+}
+
+#content h2 {
+    font-weight: normal;
+}
+#content input {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
+    width: 40%;
+
+    height: 4%;
+    border-radius: 10px;
+    border: solid;
+    border-width: thin;
+
+     text-align: center;
+}
+
+#content label {
+    margin-left: 30%;
+    margin-right: 30%; 
+    width: 30%;
+}
+
+#content button {
+    border-style: none;
+    border-radius: 15px;
+    height: 5%;
+
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 30%;
+    margin-top: 2%;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+}
+
+ /*Overtop Layout Style */
+#loading {
+    display: none;
+    height: 10%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+}
+
+#message {
+    display: none;
+
+    width: 20%;
+    height: 5%;
+
+    margin-top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    
+    color: black;
+    padding: 2%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+}
+
